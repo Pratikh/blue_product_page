@@ -1,7 +1,7 @@
-import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
 // eslint-disable-next-line jest/no-mocks-import
-import UserJson from '../../__mocks__/user.json';
+import UserJson from "../../__mocks__/user.json";
 
 export interface UserJsonI {
   id: number;
@@ -16,10 +16,10 @@ interface UserContextValue {
   data?: UserJsonI;
 }
 
-const UserContext = createContext<UserContextValue>({
+export const UserContext = createContext<UserContextValue>({
   data: UserJson,
   isLoading: false,
-  error: '',
+  error: "",
 });
 
 export const UserInfoContextProvider = ({
@@ -30,19 +30,19 @@ export const UserInfoContextProvider = ({
   const [userInfo, setUserInfo] = useState<UserJsonI>();
   // eslint-disable-next-line react/hook-use-state
   const [isLoading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const loadData = async () => {
       try {
         setLoading(true);
-        const resp = await fetch('/api/user', {
-          method: 'GET',
+        const resp = await fetch("/api/user", {
+          method: "GET",
         });
         const jsonData = (await resp.json()) as UserJsonI;
         setUserInfo(jsonData);
       } catch {
-        setError('Something went wrong');
+        setError("Something went wrong");
       } finally {
         setLoading(false);
       }
@@ -57,7 +57,7 @@ export const UserInfoContextProvider = ({
       isLoading,
       error,
     }),
-    [error, isLoading, userInfo],
+    [error, isLoading, userInfo]
   );
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;

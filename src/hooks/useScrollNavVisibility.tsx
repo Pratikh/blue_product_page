@@ -1,9 +1,12 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from "react";
+
+export default function useBarVisibility(initalValue: boolean) {
+  return useState(initalValue);
+}
 
 export function useScrollNavVisibility() {
+  const [isNavbarVisible, setNavBarVisbility] = useBarVisibility(true);
   const refCurrentScrollPos = useRef(0);
-  // eslint-disable-next-line react/hook-use-state
-  const [isNavbarVisible, setNavBarVisbility] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -13,9 +16,9 @@ export function useScrollNavVisibility() {
       refCurrentScrollPos.current = currentScrollPos;
       setNavBarVisbility(visible);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 

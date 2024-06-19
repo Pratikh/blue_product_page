@@ -1,5 +1,6 @@
 export const Logo = () => (
   <svg
+    data-testid="company-logo"
     aria-labelledby="desktopbrand-tm-title"
     role="img"
     width="38px"
