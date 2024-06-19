@@ -1,14 +1,14 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import { ProductI } from 'src/context/Product';
-import styled from 'styled-components';
-import { Button, Card } from 'theme-ui';
+import Image from "next/image";
+import Link from "next/link";
+import { Button, Card } from "theme-ui";
+import { styled } from "styled-components";
+import { ProductI } from "../../context/Product";
 
 const localCurrencySymbol = {
-  USD: '$',
-  EURO: '€',
+  USD: "$",
+  EURO: "€",
 };
-type CurrencyType = 'USD' | 'EURO';
+type CurrencyType = "USD" | "EURO";
 
 export const ProductCard = ({ productData }: { productData: ProductI }) => {
   const currencySymbol =
@@ -40,7 +40,7 @@ export const ProductCard = ({ productData }: { productData: ProductI }) => {
           <Link
             data-testid="product-buy-now-link"
             href={{
-              pathname: '/en/US/product-info',
+              pathname: "/en/US/product-info",
               query: {
                 id: productData.id,
               },

@@ -1,4 +1,4 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext } from "react";
 
 export interface ProductI {
   id: string;
@@ -11,7 +11,7 @@ export interface ProductI {
   };
 }
 
-const ProductContext = createContext<ProductI[]>([]);
+export const ProductContext = createContext<ProductI[]>([]);
 
 export const ProductContextProvider = ({
   children,
